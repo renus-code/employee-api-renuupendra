@@ -1,0 +1,60 @@
+<h2>Find Airbnb by ID</h2>
+
+<form action="/airbnb/find" method="POST">
+  <label>Enter Airbnb ID (Custom ID or MongoDB ObjectId):</label>
+  <input type="text" name="id" required placeholder="e.g., 1222724465 or 507f1f77bcf86cd799439011">
+  <button type="submit">Search</button>
+</form>
+
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+
+{{#if listing}}
+  <div style="margin-top:30px; padding:20px; background:#f8f9fa; border-radius:8px;">
+    <h3 style="color:#2c3e50;">{{listing.NAME}}</h3>
+    <table style="width:100%; margin-top:15px; text-align:left;">
+      <tr>
+        <td><strong>Custom ID:</strong></td>
+        <td>{{listing.id}}</td>
+      </tr>
+      <tr>
+        <td><strong>MongoDB ID:</strong></td>
+        <td>{{listing._id}}</td>
+      </tr>
+      <tr>
+        <td><strong>Price:</strong></td>
+        <td>{{listing.price}}</td>
+      </tr>
+      <tr>
+        <td><strong>Service Fee:</strong></td>
+        <td>
+          {{#if listing.serviceFee}}
+            {{listing.serviceFee}}
+          {{else}}
+            <span style="background-color: #ffb6c1; padding: 4px 8px; border-radius: 4px; color: #8b0000; font-weight: 600;">0</span>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Neighborhood:</strong></td>
+        <td>{{listing.neighbourhood}}</td>
+      </tr>
+      <tr>
+        <td><strong>Property Type:</strong></td>
+        <td>{{listing.property_type}}</td>
+      </tr>
+      <tr>
+        <td><strong>Room Type:</strong></td>
+        <td>{{listing.roomType}}</td>
+      </tr>
+      <tr>
+        <td><strong>Country:</strong></td>
+        <td>{{listing.country}}</td>
+      </tr>
+      <tr>
+        <td><strong>Host Name:</strong></td>
+        <td>{{listing.hostName}}</td>
+      </tr>
+    </table>
+  </div>
+{{/if}}
+

@@ -1,0 +1,11 @@
+<h2>Delete Employee</h2>
+
+<form action="/employees/delete" method="POST">
+  <label>Enter Employee ID:</label>
+  <input type="text" name="id" required placeholder="MongoDB ObjectId">
+  <button type="submit" style="background:#e74c3c;">Delete Employee</button>
+</form>
+
+{{#if success}}<p class="msg success">{{success}}</p>{{/if}}
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+

@@ -1,0 +1,52 @@
+<h2>Find Employee by ID</h2>
+
+<form action="/employees/find" method="POST">
+  <label>Enter Employee ID:</label>
+  <input type="text" name="id" required placeholder="MongoDB ObjectId">
+  <button type="submit">Search</button>
+</form>
+
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+
+{{#if employee}}
+  <div style="margin-top:30px; padding:20px; background:#f8f9fa; border-radius:8px;">
+    <h3>Employee Details</h3>
+    <table style="width:100%; margin-top:15px;">
+      <tr>
+        <td><strong>ID:</strong></td>
+        <td>{{employee._id}}</td>
+      </tr>
+      <tr>
+        <td><strong>Name:</strong></td>
+        <td>{{employee.name}}</td>
+      </tr>
+      <tr>
+        <td><strong>Salary:</strong></td>
+        <td>${{employee.salary}}</td>
+      </tr>
+      <tr>
+        <td><strong>Age:</strong></td>
+        <td>{{employee.age}}</td>
+      </tr>
+      <tr>
+        <td><strong>Department:</strong></td>
+        <td>{{employee.department}}</td>
+      </tr>
+      <tr>
+        <td><strong>Status:</strong></td>
+        <td>
+          {{#if employee.isActive}}
+            <span style="color:green; font-weight:600;">Active</span>
+          {{else}}
+            <span style="color:red; font-weight:600;">Inactive</span>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Created:</strong></td>
+        <td>{{employee.createdAt}}</td>
+      </tr>
+    </table>
+  </div>
+{{/if}}
+

@@ -1,0 +1,11 @@
+<h2>Delete Airbnb Listing</h2>
+
+<form action="/airbnb/delete" method="POST">
+  <label>Enter Airbnb ID:</label>
+  <input type="text" name="id" required>
+  <button type="submit">Delete</button>
+</form>
+
+{{#if success}}<p class="msg success">{{success}}</p>{{/if}}
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+

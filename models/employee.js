@@ -32,7 +32,11 @@ const EmpSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    collection: "employees",
   }
 );
 
-module.exports = mongoose.model("Employee", EmpSchema);
+// Use "test" database for employees
+const testDb = mongoose.connection.useDb("test");
+
+module.exports = testDb.model("Employee", EmpSchema);

@@ -1,0 +1,143 @@
+<h2>All Airbnb Listings</h2>
+
+{{#if airbnbs.length}}
+  <style>
+    .listing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .listing-table thead {
+      background: #3498db;
+      color: white;
+    }
+    .listing-table th, .listing-table td {
+      padding: 6px 8px;
+      text-align: left;
+      font-size: 0.9em;
+    }
+    .listing-table tbody tr:nth-child(even) {
+      background: #f2f6fa;
+    }
+    .listing-table tbody tr:hover {
+      background: #e8f4ff;
+      transition: 0.3s;
+    }
+    .listing-table img {
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .service-fee-empty {
+      background-color: #ffb6c1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: #8b0000;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .pagination {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .pagination a, .pagination span {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #3498db;
+      border: 1px solid #3498db;
+      transition: 0.3s;
+    }
+    .pagination a:hover {
+      background: #3498db;
+      color: white;
+    }
+    .filter-bar {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .filter-bar button {
+      padding: 8px 12px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .filter-bar button:hover {
+      background: #2980b9;
+    }
+  </style>
+
+  <table class="listing-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Neighbourhood</th>
+        <th>Property</th>
+        <th>Room Type</th>
+        <th>Price</th>
+        <th>Service Fee</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each airbnbs}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{NAME}}</td>
+          <td>{{neighbourhood}}</td>
+          <td>{{property_type}}</td>
+          <td>{{roomType}}</td>
+          <td>{{price}}</td>
+          <td>
+            {{#if serviceFee}}
+              {{serviceFee}}
+            {{else}}
+              <span class="service-fee-empty">0</span>
+            {{/if}}
+          </td>
+          <td>
+            {{#if images.[0]}}
+              <img src="{{images.[0]}}" alt="{{NAME}}" width="80" height="60" />
+            {{else}}
+              <span style="color:#888; font-size:0.8em;">No Image</span>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    {{#if hasPrev}}
+      <a href="/airbnb?page={{prevPage}}&limit={{limit}}">⬅ Prev</a>
+    {{/if}}
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    {{#if hasNext}}
+      <a href="/airbnb?page={{nextPage}}&limit={{limit}}">Next ➡</a>
+    {{/if}}
+  </div>
+
+  <!-- Filters -->
+  <form class="filter-bar" action="/airbnb" method="GET">
+    <label>Items per page:</label>
+    <input type="number" name="limit" value="{{limit}}" min="1" max="20" />
+    <button type="submit">Apply</button>
+  </form>
+{{else}}
+  <p style="text-align:center; color:#999;">No listings available.</p>
+{{/if}}
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Employee & Airbnb Management</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .card p {
+      color: #7f8c8d;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .employee-card {
+      border-top: 4px solid #27ae60;
+    }
+
+    .airbnb-card {
+      border-top: 4px solid #3498db;
+    }
+
+    .features {
+      margin-top: 20px;
+      text-align: left;
+      color: #95a5a6;
+      font-size: 0.9rem;
+    }
+
+    .features li {
+      margin: 8px 0;
+      list-style: none;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .airbnb-card .features li:before {
+      color: #3498db;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome</h1>
+    <p class="subtitle">Employee & Airbnb Management System</p>
+
+    <div class="cards">
+      <a href="/employees" class="card employee-card">
+        <div class="card-icon">👥</div>
+        <h2>Explore Employees</h2>
+        <p>Manage your employee database with ease</p>
+        <ul class="features">
+          <li>View all employees</li>
+          <li>Add new employees</li>
+          <li>Search & filter</li>
+          <li>Update & delete</li>
+        </ul>
+      </a>
+
+      <a href="/airbnb" class="card airbnb-card">
+        <div class="card-icon">🏡</div>
+        <h2>Explore Airbnb Listings</h2>
+        <p>Browse and manage Airbnb property listings</p>
+        <ul class="features">
+          <li>View all listings</li>
+          <li>Add new listings</li>
+          <li>Search by ID</li>
+          <li>Update & delete</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>

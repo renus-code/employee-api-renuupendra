@@ -1,0 +1,18 @@
+<h2>Update Airbnb Listing</h2>
+
+<form action="/airbnb/update" method="POST">
+  <label>ID:</label>
+  <input type="text" name="id" required>
+
+  <label>New Title:</label>
+  <input type="text" name="NAME" required>
+
+  <label>New Price:</label>
+  <input type="text" name="price" required>
+
+  <button type="submit">Update</button>
+</form>
+
+{{#if success}}<p class="msg success">{{success}}</p>{{/if}}
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+
