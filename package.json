@@ -1,9 +1,11 @@
 {
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.4",
+    "mongoose": "^9.0.0"
   },
   "scripts": {
-  "start": "node app.js"
-}
-
+    "start": "node app.js"
+  }
 }
