@@ -13,18 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 // Handlebars setup
 const hbs = exphbs.create({
   defaultLayout: false,
-  layoutsDir: "views/layouts",
+  layoutsDir: path.join(__dirname, "views", "layouts"),
   helpers: {
-    eq: function (a, b) {
-      return a === b;
-    },
+    eq: (a, b) => a === b,
   },
 });
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-
-// Serve static files (images, css, etc.)
-app.use(express.static("public"));
+app.set("views", path.join(__dirname, "views")); // ensure correct path
 
 // MongoDB connection
 mongoose
@@ -65,11 +61,12 @@ app.use((err, req, res, next) => {
   console.error("Error:", err);
 
   // JSON parsing errors
-  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+  if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     return res.status(400).json({
       message: "Invalid JSON format",
-      error: "Please check your JSON syntax. Common issues: trailing commas, unclosed brackets, or invalid characters.",
-      details: err.message
+      error:
+        "Please check your JSON syntax. Common issues: trailing commas, unclosed brackets, or invalid characters.",
+      details: err.message,
     });
   }
 
@@ -85,13 +82,13 @@ app.use((err, req, res, next) => {
   if (err.name === "CastError") {
     return res.status(400).json({
       message: "Invalid ID format",
-      error: err.message
+      error: err.message,
     });
   }
 
   // Default error
-  res.status(err.status || 500).json({ 
-    message: err.message || "Internal Server Error"
+  res.status(err.status || 500).json({
+    message: err.message || "Internal Server Error",
   });
 });
 
