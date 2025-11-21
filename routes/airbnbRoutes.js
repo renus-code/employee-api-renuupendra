@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/employeeController");
+const controller = require("../controllers/airbnbController");
 
+// API endpoints
 router.get("/", controller.getAll);
 router.get("/:id", controller.getOne);
 router.post("/", controller.create);
 router.put("/:id", controller.update);
-router.delete("/:id", controller.remove);
+router.delete("/:id", controller.delete);
 
 module.exports = router;

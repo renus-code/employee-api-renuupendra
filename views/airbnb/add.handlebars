@@ -1,0 +1,21 @@
+<h2>Add New Airbnb Listing</h2>
+
+<form action="/airbnb/add" method="POST">
+  <label>Title:</label>
+  <input type="text" name="NAME" required>
+
+  <label>Location:</label>
+  <input type="text" name="neighbourhood" required>
+
+  <label>Price:</label>
+  <input type="text" name="price" required>
+
+  <label>Property Type:</label>
+  <input type="text" name="property_type" required>
+
+  <button type="submit">Add Listing</button>
+</form>
+
+{{#if success}}<p class="msg success">{{success}}</p>{{/if}}
+{{#if error}}<p class="msg error">{{error}}</p>{{/if}}
+

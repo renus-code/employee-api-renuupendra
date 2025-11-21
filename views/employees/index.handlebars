@@ -1,0 +1,109 @@
+<h2>All Employees</h2>
+
+{{#if employees.length}}
+  <style>
+    .employee-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .employee-table thead {
+      background: #27ae60;
+      color: white;
+    }
+    .employee-table th, .employee-table td {
+      padding: 6px 8px;
+      text-align: left;
+      font-size: 0.9em;
+    }
+    .employee-table tbody tr:nth-child(even) {
+      background: #f2f6fa;
+    }
+    .employee-table tbody tr:hover {
+      background: #e8f8f0;
+      transition: 0.3s;
+    }
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-active {
+      background: #27ae60;
+      color: white;
+    }
+    .status-inactive {
+      background: #e74c3c;
+      color: white;
+    }
+    .pagination {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .pagination a, .pagination span {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #27ae60;
+      border: 1px solid #27ae60;
+      transition: 0.3s;
+    }
+    .pagination a:hover {
+      background: #27ae60;
+      color: white;
+    }
+  </style>
+
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Age</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each employees}}
+        <tr>
+          <td>{{_id}}</td>
+          <td><strong>{{name}}</strong></td>
+          <td>${{salary}}</td>
+          <td>{{age}}</td>
+          <td>{{department}}</td>
+          <td>
+            {{#if isActive}}
+              <span class="status-badge status-active">Active</span>
+            {{else}}
+              <span class="status-badge status-inactive">Inactive</span>
+            {{/if}}
+          </td>
+          <td>{{createdAt}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    {{#if hasPrev}}
+      <a href="/employees?page={{prevPage}}&limit={{limit}}">⬅ Prev</a>
+    {{/if}}
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    {{#if hasNext}}
+      <a href="/employees?page={{nextPage}}&limit={{limit}}">Next ➡</a>
+    {{/if}}
+  </div>
+{{else}}
+  <p style="text-align:center; color:#999; margin-top: 30px;">No employees found.</p>
+{{/if}}
+

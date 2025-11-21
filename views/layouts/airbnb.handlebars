@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airbnb Dashboard</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafc;
+    }
+
+    header {
+      background: #3498db;
+      color: white;
+      padding: 8px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 5px auto;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin: 5px 0;
+      text-align: center;
+      color: white;
+      font-size: 1.5em;
+    }
+
+    h2 {
+      margin: 5px 0;
+      text-align: center;
+      color: #2c3e50;
+      font-size: 1.3em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    form label {
+      align-self: flex-start;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .msg {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    .msg.error {
+      color: red;
+    }
+
+    .msg.success {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Airbnb Dashboard</h1>
+    <nav>
+      <a href="/airbnb">🏠 Home</a>
+      <a href="/airbnb/add">➕ Add</a>
+      <a href="/airbnb/find">🔍 Find</a>
+      <a href="/airbnb/update">✏️ Update</a>
+      <a href="/airbnb/delete">🗑 Delete</a>
+      <a href="/employees" style="margin-left: 30px; border-left: 2px solid white; padding-left: 20px;">👥 Employees</a>
+    </nav>
+  </header>
+
+  <main>
+    {{{body}}}
+  </main>
+</body>
+
+</html>
